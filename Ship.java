@@ -26,7 +26,7 @@ public class Ship {
   }
 
   public Ship() {
-    this(30, 6, 5, 7, 0.25, true);
+    this(30, 6, 5, 8, 0.25, true);
   }
 
   public String dealDamage(int damage) {
