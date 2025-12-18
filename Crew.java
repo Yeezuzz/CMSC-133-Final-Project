@@ -38,7 +38,7 @@ public class Crew {
 	  }
 	  
 	  public String toString() {
-		  return "Name: " + name + ", Health: " + health + ";";
+		  return "Name: " + name + ", Health: " + health + ", Position: " + position + "; ";
 	  }
 	  
 }
