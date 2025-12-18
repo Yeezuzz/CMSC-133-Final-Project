@@ -61,7 +61,7 @@ public class Main {
 					System.out.print("Which crew member? ");
 					response = s.nextLine();
 					for (Crew c : federationCrew) {
-						if (c.getName().equals(response)) {
+						if (c.getName().toLowerCase().equals(response)) {
 							System.out.println("Where would you like to move " + c.getName() + "? (Engines, Shields, Weapons, Hull) ");
 							response = s.nextLine();
 							if (response.toLowerCase().equals("shields")) {
@@ -120,27 +120,30 @@ public class Main {
 									if (rebelFlagship.getShieldBubbles() > 0) {
 										rebelFlagship.setShieldBubbles(rebelFlagship.getShieldBubbles() - shotsHit);
 										if (rebelFlagship.getShieldBubbles() < 0) {
-											rebelFlagship.damageSystem(target, w.fire(Math.abs(rebelFlagship.getShieldBubbles())));
-											rebelFlagship.dealDamage(w.fire(Math.abs(rebelFlagship.getShieldBubbles())));
+											System.out.println(rebelFlagship.damageSystem(target, w.fire(Math.abs(rebelFlagship.getShieldBubbles()))));
+											System.out.println(rebelFlagship.dealDamage(w.fire(Math.abs(rebelFlagship.getShieldBubbles()))));
 											rebelFlagship.setShieldBubbles(0);
+										} else {
+											w.fire();
+											System.out.println("Enemy shields at " + rebelFlagship.getShieldBubbles() + " strength.");
 										} 
 									} else {
-										rebelFlagship.damageSystem(target, w.fire(shotsHit));
-										rebelFlagship.dealDamage(w.fire(shotsHit));
+										System.out.println(rebelFlagship.damageSystem(target, w.fire(shotsHit)));
+										System.out.println(rebelFlagship.dealDamage(w.fire(shotsHit)));
 									}
 									
 								} else {
 									
 									BeamWeapon w = (BeamWeapon) selectedWeapon;
 									if (rebelFlagship.getShieldBubbles() == 0) {
-										rebelFlagship.damageSystem(target, w.fire());
-										rebelFlagship.dealDamage(w.fire());
+										System.out.println(rebelFlagship.damageSystem(target, w.fire()));
+										System.out.println(rebelFlagship.dealDamage(w.fire()));
 									} else if (rebelFlagship.getShieldBubbles() == 1) {
-										rebelFlagship.damageSystem(target, w.fire()/2);
-										rebelFlagship.dealDamage(w.fire()/2);
+										System.out.println(rebelFlagship.damageSystem(target, w.fire()/2));
+										System.out.println(rebelFlagship.dealDamage(w.fire()/2));
 									} else {
 										w.setChargeTime(4);
-										System.out.println("The beam failed to penetrate their shields");
+										System.out.println("The beam failed to penetrate the shields.");
 									}
 									
 								}
@@ -163,12 +166,12 @@ public class Main {
 			
 			//Repair systems based on crew locations
 			for (Crew c : federationCrew) {
-				if (c.getPosition().equals("shields")) {
+				if (c.getPosition().equals("Shields")) {
 			  		if (kestrel.getShields() < 6) kestrel.setShields(kestrel.getShields() + 1);
-			  	} else if (c.getPosition().equals("weapons")) {
-			  		if (kestrel.getWeapons() < 8) kestrel.setEngines(kestrel.getEngines() + 1);
-			  	} else if (c.getPosition().equals("engines")) {
-			  		if (kestrel.getEngines() < 5) kestrel.setWeapons(kestrel.getWeapons() + 1);
+			  	} else if (c.getPosition().equals("Weapons")) {
+			  		if (kestrel.getWeapons() < 8) kestrel.setWeapons(kestrel.getWeapons() + 1);
+			  	} else if (c.getPosition().equals("Engines")) {
+			  		if (kestrel.getEngines() < 5) kestrel.setEngines(kestrel.getEngines() + 1);
 			  	}
 			}
 			
@@ -208,6 +211,7 @@ public class Main {
 			
 			System.out.println();
 			System.out.println("Enemy turn: Hull ~ " + rebelFlagship.getHull() + ", Shields ~ " + rebelFlagship.getShields() + ", Engines ~ " + rebelFlagship.getEngines() + ", Weapons ~ " + rebelFlagship.getWeapons() + ". Crew: " + rebelCrew.toString());
+			System.out.println();
 			for (WeaponInt w : flagshipWeapons) {
 				
 				if (w.getChargeTime() == 0) {
@@ -233,33 +237,36 @@ public class Main {
 							if (miss > kestrel.getDodgeChance()) shotsHit++;
 						}
 						
-						if (kestrel.getShieldBubbles() > 0) {
+						if (kestrel.getShieldBubbles() > 0 && !(w.getName().equals("Boss Missile "))) {
 							kestrel.setShieldBubbles(kestrel.getShieldBubbles() - shotsHit);
-							if (kestrel.getShieldBubbles() < 0) {
+							if (kestrel.getShieldBubbles() < 0 || w.getName().equals("Boss Missile ")) {
 								
 								if (weapon.getName().contains("Ion")) {
 									kestrel.stunSystem(target, shotsHit);
+									System.out.println(target + " stunned for " + shotsHit + " turns.");
 								} else {
-									kestrel.damageSystem(target, weapon.fire(Math.abs(kestrel.getShieldBubbles())));
-									kestrel.dealDamage(weapon.fire(Math.abs(kestrel.getShieldBubbles())));									
+									System.out.println(kestrel.damageSystem(target, weapon.fire(Math.abs(kestrel.getShieldBubbles()))));
+									System.out.println(kestrel.dealDamage(weapon.fire(Math.abs(kestrel.getShieldBubbles()))));									
 								}
 
 								kestrel.setShieldBubbles(0);
+							} else {
+								System.out.println("Our shields at " + kestrel.getShieldBubbles() + " strength.");
 							} 
 						} else {
-							kestrel.damageSystem(target, weapon.fire(shotsHit));
-							kestrel.dealDamage(weapon.fire(shotsHit));
+							System.out.println(kestrel.damageSystem(target, weapon.fire(shotsHit)));
+							System.out.println(kestrel.dealDamage(weapon.fire(shotsHit)));
 						}
 						
 					} else {
 						
 						BeamWeapon weapon = (BeamWeapon) w;
 						if (kestrel.getShieldBubbles() == 0) {
-							kestrel.damageSystem(target, weapon.fire());
-							kestrel.dealDamage(weapon.fire());
-						} else if (rebelFlagship.getShieldBubbles() == 1) {
-							rebelFlagship.damageSystem(target, weapon.fire()/2);
-							rebelFlagship.dealDamage(weapon.fire()/2);
+							System.out.println(kestrel.damageSystem(target, weapon.fire()));
+							System.out.println(kestrel.dealDamage(weapon.fire()));
+						} else if (kestrel.getShieldBubbles() == 1) {
+							System.out.println(kestrel.damageSystem(target, weapon.fire()/2));
+							System.out.println(kestrel.dealDamage(weapon.fire()/2));
 						} else {
 							weapon.setChargeTime(4);
 						}
@@ -271,16 +278,13 @@ public class Main {
 			
 			//Repair systems based on crew
 			for (Crew c : rebelCrew) {
-				if (c.getPosition().equals("shields")) {
+				if (c.getPosition().equals("Shields")) {
 			  		if (rebelFlagship.getShields() < 6) rebelFlagship.setShields(rebelFlagship.getShields() + 1);
-			  	} else if (c.getPosition().equals("weapons")) {
-			  		if (rebelFlagship.getWeapons() < 8) rebelFlagship.setEngines(rebelFlagship.getEngines() + 1);
-			  	} else if (c.getPosition().equals("engines")) {
-			  		if (rebelFlagship.getEngines() < 5) rebelFlagship.setWeapons(rebelFlagship.getWeapons() + 1);
+			  	} else if (c.getPosition().equals("Weapons")) {
+			  		if (rebelFlagship.getWeapons() < 8) rebelFlagship.setWeapons(rebelFlagship.getWeapons() + 1);
+			  	} else if (c.getPosition().equals("Engines")) {
+			  		if (rebelFlagship.getEngines() < 2) rebelFlagship.setEngines(rebelFlagship.getEngines() + 1);
 			  	}
-			}
-			for (WeaponInt w : flagshipWeapons) {
-				w.charge();
 			}
 			
 			if (rebelFlagship.getWeapons() > 2) {
@@ -293,7 +297,7 @@ public class Main {
 			} else {
 				flagshipWeapons.get(1).deCharge();
 			}
-			if (rebelFlagship.getWeapons() == 8) {
+			if (rebelFlagship.getWeapons() > 6) {
 				flagshipWeapons.get(2).charge();
 			} else {
 				flagshipWeapons.get(2).deCharge();
@@ -303,6 +307,7 @@ public class Main {
 			rebelFlagship.setDodgeChance();
 			System.out.println();
 			
+			//Missiles bypass shields!
 			//Print more info (charge times, what systems were hit)
 			//Clean up and make methods
 			//Crew health decreases on hit
