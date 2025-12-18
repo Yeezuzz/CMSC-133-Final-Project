@@ -37,4 +37,8 @@ public class Crew {
 		  this.position = position;
 	  }
 	  
+	  public String toString() {
+		  return "Name: " + name + ", Health: " + health + ";";
+	  }
+	  
 }
