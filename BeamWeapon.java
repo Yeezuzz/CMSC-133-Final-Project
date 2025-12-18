@@ -30,8 +30,9 @@ public class BeamWeapon implements WeaponInt {
 	 }
 	 
 	 public String getStatus() {
-		 if (chargeTime > 1) return "is not ready to fire"; 
-		 if (chargeTime > 0) return "will be ready to fire next turn";
+		 if (chargeTime > 2) return "is not ready to fire";
+		 if (chargeTime == 2) return "will be ready to fire in two turns"; 
+		 if (chargeTime == 1) return "will be ready to fire next turn";
 		 return "is ready to fire";
 	 }
 	 
