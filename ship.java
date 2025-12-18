@@ -1,27 +1,41 @@
-public class Ship {
+package app;
 
-  private int hull, shield, engines, weapons;
+import java.util.ArrayList;
+
+public class Ship {
+	
+  private int hull, shield, engines, weapons, shieldBubbles, shieldsStun, enginesStun, weaponsStun;
   private double dodgeChance;
+  private ArrayList<String> shipRooms = new ArrayList<String>();
   
-  public Ship(int hull, int shield, int engines, int weapons, double dodgeChance) {
+  public Ship(int hull, int shield, int engines, int weapons, double dodgeChance, boolean Federation) {
     this.hull = hull;
     this.shield = shield;
     this.engines = engines;
     this.weapons = weapons;
-    this.double = dodgeChance;
+    this.dodgeChance = dodgeChance;
+    //shipRooms.add("engines");
+    shipRooms.add("weapons");
+    shipRooms.add("shields");
+    shipRooms.add("hull");
+    if (Federation) {
+    	this.shieldBubbles = 3;
+    } else {
+    	this.shieldBubbles = 4;
+    }
   }
 
   public Ship() {
-    this(30, 6, 5, 7, 0.25);
+    this(30, 6, 5, 7, 0.25, true);
   }
 
-  private String dealDamage(int damage) {
+  public String dealDamage(int damage) {
     hull -= damage;
     if (hull < 0) hull = 0;
     return "Hull at " + hull;
   }
 
-  private String damageSystem(String system, int damage) {
+  public String damageSystem(String system, int damage) {
     
     if (system.toLowerCase().equals("shield")) {
       shield -= damage;
@@ -40,7 +54,7 @@ public class Ship {
     
   }
 
-  public int setDodgeChance() {
+  public void setDodgeChance() {
     dodgeChance = engines * 0.05;
   }
 
@@ -49,18 +63,72 @@ public class Ship {
   }
 
   public int getShields() {
-    return shields;
+    return shield;
   }
+  
+  public void setShields(int shield) {
+	  this.shield = shield;
+  } 
 
   public int getEngines() {
     return engines;
+  }
+  
+  public void setEngines(int engines) {
+	  this.engines = engines;
+  } 
+
+  public int getEnginesStun() {
+	  return enginesStun;
+  }
+  
+  public int getShieldsStun() {
+	  return shieldsStun;
+  }
+  
+  public int getWeaponsStun() {
+	  return weaponsStun;
+  }
+  
+  public void setEnginesStun(int stun) {
+	  enginesStun = stun;
+  }
+  
+  public void setWeaponsStun(int stun) {
+	  weaponsStun = stun;
+  }
+  
+  public void setShieldsStun(int stun) {
+	  shieldsStun = stun;
+  }
+  
+  public void stunSystem(String system, int time) {
+	  if (system.equals("engines")) {
+		  enginesStun = time;
+	  } else if (system.equals("shields")) {
+		  shieldsStun = time;
+	  } else {
+		  weaponsStun = time;
+	  }
   }
 
   public int getWeapons() {
     return weapons;
   }
+  
+  public void setWeapons(int weapons) {
+	  this.weapons = weapons;
+  }
+  
+  public int getShieldBubbles() {
+	  return shieldBubbles;
+  }
+  
+  public void setShieldBubbles(int shieldBubbles) {
+	  this.shieldBubbles = shieldBubbles;
+  }
 
-  public int getDodgeChance() {
+  public double getDodgeChance() {
     return dodgeChance;
   }
   
