@@ -2,6 +2,10 @@
 
 I will be creating a text based recreation of the Rebel Flagship fight from FTL. The basic premise involves your ship fighting another ship. Each ship will take turns firing weapons and hitting systems. The first ship to have its hull reach 0 or have all its crew die loses. Each ship has systems of various levels. If these systems are damaged, they can partially or fully lose functionality. Shields block all non missile shots. Evasion dodges all non beam shots. If shields are down and a shot is not evaded, it will deal one damage to its targeted system and one damage to the hull.
 
+# Important
+
+The project has changed slightly from the original plan. The code has been left uncleaned and is all over the place. There are duplicate methods and unused variables. This is because I genuinenly ran out of time to make this, and it was a lot harder to make than I thought. Oops.
+
 # Information provided in game
 
   As the AI captain of a Federation starship, you must direct your crew as they battle the Rebel Flagship. As you have no eyes, ears, or other senses, the  input from the terminal is all you can use to seize victory. Manage the ship, keep your crew alive, and destroy the Rebel Flagship to win!
@@ -36,3 +40,9 @@ I will be creating a text based recreation of the Rebel Flagship fight from FTL.
   It might be wise to temporarily pull crew out of systems if you know a big attack is coming. Count when the Flagship fires! This might backfire spectacularly though…
   
   It takes four points of damage to shut down the missile launcher! Keep this in mind!
+
+  Keep in mind the enemy’s turn also counts as a turn! As long as you keep your weapon at the “ready to charge in two turns” state, you’ll have it at the next opportunity!
+
+  Your weapons system has a “buffer” point! You only need 7 levels to power everything, but I gave you 8! Don’t say I never do anything for you.
+
+  You can type in shorthand to move crew by just typing the first letter of the system. As long as you don’t get “invalid response” in return, it worked!
