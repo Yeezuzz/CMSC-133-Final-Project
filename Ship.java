@@ -37,7 +37,7 @@ public class Ship {
 
   public String damageSystem(String system, int damage) {
     
-    if (system.toLowerCase().equals("shield")) {
+    if (system.toLowerCase().equals("shields")) {
       shield -= damage;
       if (shield < 0) shield = 0;
       return "Shields hit for " + damage + " damage. Current level: " + shield;
