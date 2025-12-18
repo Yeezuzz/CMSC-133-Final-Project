@@ -6,7 +6,7 @@ I will be creating a text based recreation of the Rebel Flagship fight from FTL.
 
 The project has changed slightly from the original plan. The code has been left uncleaned and is all over the place. There are duplicate methods and unused variables. This is because I genuinenly ran out of time to make this, and it was a lot harder to make than I thought. Oops.
 
-# Information provided in game
+# Information provided in game (you don't have to read this)
 
   As the AI captain of a Federation starship, you must direct your crew as they battle the Rebel Flagship. As you have no eyes, ears, or other senses, the  input from the terminal is all you can use to seize victory. Manage the ship, keep your crew alive, and destroy the Rebel Flagship to win!
   
