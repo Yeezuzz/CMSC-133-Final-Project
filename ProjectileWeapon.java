@@ -32,13 +32,12 @@ public class ProjectileWeapon implements WeaponInt {
 	  
 	  public int fire(int shots) {
 	    if (name.contains("Missile")) {
-	      chargeTime = 4;
+	    	chargeTime = 4;
 	    } else if (name.contains("Ion")) {
 	    	chargeTime = 3;
 	    	return stunTime * shots;
-	    }else {
-	      chargeTime = 3;
 	    }
+	    chargeTime = 3;
 	    return damage * shots;
 	  }
 	
@@ -53,10 +52,15 @@ public class ProjectileWeapon implements WeaponInt {
 			  if (chargeTime < 3) chargeTime++;
 		  }
 	  }
+	  
+	  public void setChargeTime(int chargeTime) {
+		  this.chargeTime = chargeTime;
+	  }
 	
 	  public String getStatus() {
-	    if (chargeTime > 1) return "is not ready to fire"; 
-	    if (chargeTime > 0) return "will be ready to fire next turn";
+		if (chargeTime > 2) return "is not ready to fire";
+	    if (chargeTime == 2) return "will be ready to fire in two turns"; 
+	    if (chargeTime == 1) return "will be ready to fire next turn";
 	    return "is ready to fire";
 	  }
 	  
