@@ -6,14 +6,97 @@ import java.util.Scanner;
 public class Main {
 	
 	public static void main(String[] args) {
-
+		
+		Scanner s = new Scanner(System.in);
+		boolean ck = true;
+		
+		while (ck) {
+			System.out.println(" ______   ______   __            _____     ______     __    __     ______     __  __     ______    \n"
+					+ "/\\  ___\\ /\\__  _\\ /\\ \\          /\\  __-.  /\\  ___\\   /\\ \"-./  \\   /\\  __ \\   /\\ \\/ /    /\\  ___\\   \n"
+					+ "\\ \\  __\\ \\/_/\\ \\/ \\ \\ \\____     \\ \\ \\/\\ \\ \\ \\  __\\   \\ \\ \\-./\\ \\  \\ \\  __ \\  \\ \\  _\"-.  \\ \\  __\\   \n"
+					+ " \\ \\_\\      \\ \\_\\  \\ \\_____\\     \\ \\____-  \\ \\_____\\  \\ \\_\\ \\ \\_\\  \\ \\_\\ \\_\\  \\ \\_\\ \\_\\  \\ \\_____\\ \n"
+					+ "  \\/_/       \\/_/   \\/_____/      \\/____/   \\/_____/   \\/_/  \\/_/   \\/_/\\/_/   \\/_/\\/_/   \\/_____/ \n"
+					+ "                                                                                                   ");
+			System.out.println("As the AI captain of a Federation starship, you must direct your crew as they battle the Rebel Flagship. \nAs you have no eyes, ears, or other senses, the input from the terminal is all you can use to seize victory. \nManage the ship, keep your crew alive (not implemented lmao), and destroy the Rebel Flagship to win!");
+			System.out.println();
+			System.out.println("What would you like to do?");
+			System.out.println("Play Game! (1)");
+			System.out.println("More info! (2)");
+			
+			String r = s.nextLine();
+			if (r.equals("2")) {
+				while (ck) {
+					System.out.println("Basic game info (1) or tips? (2) [3 to quit]");
+					r = s.nextLine();
+					if (r.equals("1")) {
+						while (ck) {
+							System.out.println();
+							System.out.println("The goal of the game is to get the enemy's hull to 0 while keeping yours above 0. You have three systems to manage in addition: shields, engines, weapons.\nShields block most hits(one layer per 2 levels), engines give a chance to dodge almost all hits (5% per level), and weapons hit.\nIf systems are damaged, they work less efficiently or not at all. Use crew to repair them. Good luck!");
+							System.out.println();
+							System.out.println("Get info about weapons (1) or return to previous menu? (2)");
+							r = s.nextLine();
+							if (r.equals("1")) {
+								System.out.println();
+								System.out.println("Laser weapons, the quintessential space combat armament!\nFound on: Both ships. Damage: One shield bubble or hull point. Shots fired: 3");
+								System.out.println();
+								System.out.println("Beam weapons, the heaviest hitters!\nFound on: Both ships. Damage: Four hull points at no shields, two hull points at one shield layer. Shots fired: 1. Special conditions: Never misses");
+								System.out.println();
+								System.out.println("Flak cannons, your secret weapon!\nFound on: Your ship. Damage: One shield bubble or hull point. Shots fired: 3");
+								System.out.println();
+								System.out.println("Missile launchers, oppressive and intimidating!\nFound on: Enemy ship. Damage: One hull point. Shots fired: 3. Special conditions: Ignores shields.");
+								System.out.println();
+								System.out.println("Ion weapons, the weird one!\nFound on: Enemy ship. Damage: Zero. Shots fired: 3.\nSpecial conditions: Temporarily stuns systems, decreasing their level. Stun is irreparable, but goes away on its own. Stun is stackable!");
+								System.out.println();
+								System.out.println("Press enter to return to previous menu.");
+								r = s.nextLine();
+								break;
+							} else if (r.equals("2")) {
+								break;
+							} else {
+								System.out.println("Invalid response");
+							}
+						}
+						
+					} else if (r.equals("2")) {
+						System.out.println();
+						System.out.println("The Flagship has a 10% chance of targeting nothing! The resulting attack will only deal hull damage if it connects.");
+						System.out.println();
+						System.out.println("Hold your weapons at full charge until all are ready to fire them in a coordinated salvo! It's the only way to break their shields!");
+						System.out.println();
+						System.out.println("It takes four points of damage to shut down the missile launcher! Keep that in mind!");
+						System.out.println();
+						System.out.println("Your weapons system has a \"buffer\" point! If it takes only one point of damage, all weapons will keep charging!");
+						System.out.println();
+						System.out.println("You can type in shorthand to move your crew by typing the first letter of the system. Also, all inputs aren't case sensitive");
+						System.out.println();
+						System.out.println("The enemy's turn also counts as a turn! Don't forget that. Seriously.");
+						System.out.println();
+						System.out.println("Press enter to return to previous menu");
+						System.out.println();
+						r = s.nextLine();
+					} else if (r.equals("3")) { 
+						break;
+					} else {
+						System.out.println("Invalid response");
+					}
+				}
+				ck = true;
+			} else if (!(r.equals("1"))){
+				System.out.println("Invalid response (you're gonna see this message a lot at this rate)");
+			} else {
+				ck = false;
+			}
+		}
+		
+		//Global variables
+		System.out.println("Thanks to Subset Games and patorjk's text to ASCII art generator!");
+		System.out.println("**************************************************");
 		Ship kestrel = new Ship();
 		Ship rebelFlagship = new Ship(20, 8, 2, 12, 0.15, false);
 		ArrayList<Crew> federationCrew = new ArrayList<Crew>();
 		ArrayList<Crew> rebelCrew = new ArrayList<Crew>();
 		ArrayList<WeaponInt> kestrelWeapons = new ArrayList<WeaponInt>();
 		ArrayList<WeaponInt> flagshipWeapons = new ArrayList<WeaponInt>();
-		Scanner s = new Scanner(System.in);
 		
 		federationCrew.add(new Crew("Engi", 100, "Shields"));
 		federationCrew.add(new Crew("Mantis", 100, "Weapons"));
@@ -31,7 +114,7 @@ public class Main {
 		flagshipWeapons.add(new ProjectileWeapon("Boss Missile ", 4, 1, 3, true, 0));
 		flagshipWeapons.add(new BeamWeapon("Boss Beam ", 4, 2, 1, 2));
 		
-		
+		//Game handler
 		while (kestrel.getHull() > 0 && rebelFlagship.getHull() > 0 && federationCrew.isEmpty() == false) {
 			
 			kestrel.setEngines(kestrel.getEngines() + kestrel.getEnginesStun());
@@ -53,7 +136,7 @@ public class Main {
 			System.out.println();
 			
 			boolean check = true;
-			
+			//Player turn
 			while (check) {
 				System.out.print("What would you like to do? (move, fire, finish) ");
 				String response = s.nextLine();
@@ -244,7 +327,7 @@ public class Main {
 			rebelFlagship.setShieldBubbles(rebelFlagship.getShields()/2);
 			rebelFlagship.setDodgeChance();
 			System.out.println("**************************************************");
-			
+			//Enemy turn
 			System.out.println("Enemy turn: Hull ~ " + rebelFlagship.getHull() + ", Shields ~ " + rebelFlagship.getShields() + ", Engines ~ " + rebelFlagship.getEngines() + ", Weapons ~ " + rebelFlagship.getWeapons() + ". Crew: [???]");
 			System.out.println();
 			for (WeaponInt w : flagshipWeapons) {
@@ -409,6 +492,6 @@ public class Main {
 			System.out.println("Congratulations! You've defeated the Rebel Flagship and ensured the victory of the Federation!");
 		}
 		s.close();
-
+		//Under 500 lines! Nice!!! All glory to me!
 	}
 }
