@@ -34,5 +34,11 @@ This project ended up taking a lot more time than I envisioned. As a result, it'
 
 I learned the importance of system design and planning things out, as well as considering ahead of time how classes will interact. If this was a group project, I would've been absolutely cooked. I will put more effort into designing before creating next time. At least I didn't start vibe coding? The mess is all mine!
 
+# Debugging
+
+Tested invalid input at all stages!
+Checked for any neverending loops or memory leaks!
+Ran several test games, checking boss behavior and testing different player inputs. Game seems to perform as expected.
+
 # Other
 Might put a demo video after dinner... maybe. If you see this assume I didn't. I swear it works on my end!!
