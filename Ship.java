@@ -50,7 +50,7 @@ public class Ship {
       if (weapons < 0) weapons = 0;
       return "Weapons hit for " + damage + " damage. Current level: " + weapons;
     }
-    return "";
+    return "systems were unharmed!";
     
   }
 
