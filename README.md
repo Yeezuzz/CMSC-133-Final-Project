@@ -1,48 +1,38 @@
 # CMSC-133-Final-Project
 
-I will be creating a text based recreation of the Rebel Flagship fight from FTL. The basic premise involves your ship fighting another ship. Each ship will take turns firing weapons and hitting systems. The first ship to have its hull reach 0 or have all its crew die loses. Each ship has systems of various levels. If these systems are damaged, they can partially or fully lose functionality. Shields block all non missile shots. Evasion dodges all non beam shots. If shields are down and a shot is not evaded, it will deal one damage to its targeted system and one damage to the hull.
+I will be creating a text based recreation of the Rebel Flagship fight from FTL. The basic premise involves your ship fighting another ship. Each ship will take turns firing weapons and hitting systems. The first ship to have its hull reach 0 or have all its crew die loses [not implemented]. Each ship has systems of various levels. If these systems are damaged, they can partially or fully lose functionality. Shields block all non missile shots. Evasion dodges all non beam shots. If shields are down and a shot is not evaded, it will deal one damage to its targeted system and one damage to the hull.
 
-# Important
+# Instructions
 
-The project has changed slightly from the original plan. The code has been left uncleaned and is all over the place. There are duplicate methods and unused variables. This is because I genuinenly ran out of time to make this, and it was a lot harder to make than I thought. Oops.
+Download project and run Main.java!
 
-# Information provided in game (you don't have to read this)
+# Classes
+Main ~ A driver that runs the game and shows the main menu. Handles the game state and all inputs from the player and the other classes.
 
-  As the AI captain of a Federation starship, you must direct your crew as they battle the Rebel Flagship. As you have no eyes, ears, or other senses, the  input from the terminal is all you can use to seize victory. Manage the ship, keep your crew alive, and destroy the Rebel Flagship to win!
-  
-  # More info:
-  
-  Laser weapons:
-  The quintessential space combat armament! Both you and the Flagship sport burst laser cannons. They fire 3 shots that will break one shield bubble or do one system + hull damage to whatever they hit!
-  
-  Beam weapons:
-  The most powerful weapon in your arsenal, a huge laser beam! Both you and the Flagship possess these formidable weapons. These weapons are capable of doing immense damage to systems and hull on hit, and can additionally pierce through one shield bubble to do half damage. Unfortunately, a ship with two or more shield bubbles will completely negate the beam's attack. Be careful!
-  
-  Missile launchers:
-  The Flagship carries a missile launcher. This fires three missiles that ignore shields! Furthermore, the Flagship seems to be carrying a nearly infinite supply of ammunition! Pray that you dodge its shots.
-  
-  Flak cannons:
-  Your unique weapon is a flak cannon! Functioning similarly to a laser weapon, it launches 3 pieces of scrap metal, tearing through one shield bubble and causing one system + hull damage on impact! Wait… it’s exactly the same as a laser weapon?
-  
-  Ion weapons:
-  The Flagship also sports an ion weapon. This high tech device does no damage on hit, but instead creates an unrepairable electrical stun on any impacted system! The stun goes away over time, but can stack. Fortunately, ion shots “fizzle out” when hitting shield bubbles, simply removing one with no stun penalty. Additionally, they have no impact on the crew.
-  
-  # Tips:
-  
-  To prevent complete steamrolls, if a system is damaged and ionized, the total damage and ionization combined won’t exceed your system level – i.e. the system can’t be at 0 and ionized at the same time.
-  
-  While you would never go out of your way to hit nothing, the Flagship has a 10% chance of targeting no systems. If the attack hits, it only does hull damage. Crew might take damage.
-  
-  Hold your weapons at full charge to fire them in a coordinated salvo!
-  
-  Don’t worry about killing the crew on the Rebel Flagship. Trust me.
-  
-  It might be wise to temporarily pull crew out of systems if you know a big attack is coming. Count when the Flagship fires! This might backfire spectacularly though…
-  
-  It takes four points of damage to shut down the missile launcher! Keep this in mind!
+Ship ~ Stores health, weapons, and systems. Weapons fire from one ship at another ship, crew move around and repair systems on a ship, and the first ship to stop existing loses. Manages damage, all subsystems, and tells weapons if they can fire. The most important class aside from Main!
 
-  Keep in mind the enemy’s turn also counts as a turn! As long as you keep your weapon at the “ready to charge in two turns” state, you’ll have it at the next opportunity!
+Crew ~ Funny little guys that repair systems damage on ships. Very cool. Too bad they can't repair hull damage.
 
-  Your weapons system has a “buffer” point! You only need 7 levels to power everything, but I gave you 8! Don’t say I never do anything for you.
+WeaponInt ~ An interface that BeamWeapon and ProjectileWeapon implement. Has a few basic methods to fire and charge the weapons.
 
-  You can type in shorthand to move crew by just typing the first letter of the system. As long as you don’t get “invalid response” in return, it worked!
+ProjectileWeapon ~ Laser/Flak cannons, Missile launchers, and Ion weapons. Shoot things at a ship and hope they don't dodge. Also manages stun time.
+BeamWeapon ~ Beam weapons. Fire a big blast and hope the other ship doesn't have its shields up. Also manages shield penetration.
+
+# Features
+Five minutes of gameplay!
+Extremely inefficient code!
+Terrible UI!
+A pretty faithful remake of FTL if it was boring and not fun at all.
+
+Several classes that work together to deliver a somewhat coherent experience, using many concepts learned in lecture?
+Eh...
+
+# What went wrong
+The development process of this project was severely limited by my lack of understanding of what I was doing. Trying to sort my ideas out in a coherently designed system and getting all the classes to work together was a process. In my head, the Ship would just magically do everything, but trying to run everything in Main and have all these variables and cases juggling around was rather difficult.
+
+This project ended up taking a lot more time than I envisioned. As a result, it's still not very clean and the crew health feature wasn't implemented (as well as the corresponding "win by crew death" scenario, and the fun realization that the Flagship would switch to being AI powered if you managed to kill all their crew... sigh...)
+
+I learned the importance of system design and planning things out, as well as considering ahead of time how classes will interact. If this was a group project, I would've been absolutely cooked. I will put more effort into designing before creating next time. At least I didn't start vibe coding?
+
+# Other
+Might put a demo video after dinner... maybe. If you see this assume I didn't. I swear it works on my end!!
