@@ -327,6 +327,7 @@ public class Main {
 			rebelFlagship.setShieldBubbles(rebelFlagship.getShields()/2);
 			rebelFlagship.setDodgeChance();
 			System.out.println("**************************************************");
+			if (kestrel.getHull() <= 0 || rebelFlagship.getHull() <= 0) break;
 			//Enemy turn
 			System.out.println("Enemy turn: Hull ~ " + rebelFlagship.getHull() + ", Shields ~ " + rebelFlagship.getShields() + ", Engines ~ " + rebelFlagship.getEngines() + ", Weapons ~ " + rebelFlagship.getWeapons() + ". Crew: [???]");
 			System.out.println();
