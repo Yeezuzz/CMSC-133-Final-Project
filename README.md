@@ -41,4 +41,6 @@ Checked for any neverending loops or memory leaks!
 Ran several test games, checking boss behavior and testing different player inputs. Game seems to perform as expected.
 
 # Other
+Link to an unusually good sample run (I swear normally it's more interesting when your systems actually get damaged): 
+https://docs.google.com/document/d/1aSpCYoSwPUb-0KEpXfM_sU1a1gZ2W83dlDYn0QadOiQ/edit?usp=sharing
 Might put a demo video after dinner... maybe. If you see this assume I didn't. I swear it works on my end!!
