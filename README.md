@@ -30,9 +30,9 @@ Eh...
 # What went wrong
 The development process of this project was severely limited by my lack of understanding of what I was doing. Trying to sort my ideas out in a coherently designed system and getting all the classes to work together was a process. In my head, the Ship would just magically do everything, but trying to run everything in Main and have all these variables and cases juggling around was rather difficult.
 
-This project ended up taking a lot more time than I envisioned. As a result, it's still not very clean and the crew health feature wasn't implemented (as well as the corresponding "win by crew death" scenario, and the fun realization that the Flagship would switch to being AI powered if you managed to kill all their crew... sigh...)
+This project ended up taking a lot more time than I envisioned. As a result, it's still not very clean and the crew health feature wasn't implemented (as well as the corresponding "win by crew death" scenario, and the fun realization that the Flagship would switch to being AI powered if you managed to kill all their crew... sigh...). I still believe I cranked out a suitable little demake, and feel proud of what I did. This was my first larger self directed project, after all.
 
-I learned the importance of system design and planning things out, as well as considering ahead of time how classes will interact. If this was a group project, I would've been absolutely cooked. I will put more effort into designing before creating next time. At least I didn't start vibe coding?
+I learned the importance of system design and planning things out, as well as considering ahead of time how classes will interact. If this was a group project, I would've been absolutely cooked. I will put more effort into designing before creating next time. At least I didn't start vibe coding? The mess is all mine!
 
 # Other
 Might put a demo video after dinner... maybe. If you see this assume I didn't. I swear it works on my end!!
